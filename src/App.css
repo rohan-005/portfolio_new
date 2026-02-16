@@ -1,0 +1,15 @@
+.dark {
+  color-scheme: dark;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.dark body {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

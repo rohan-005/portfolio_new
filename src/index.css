@@ -1,0 +1,297 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white dark:bg-black text-black dark:text-white;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20;
+  }
+  
+  .terminal-cursor::after {
+    content: '_';
+    @apply inline-block animate-cursor-blink;
+  }
+  
+  .retro-scanline {
+    @apply relative overflow-hidden;
+  }
+  
+  .retro-scanline::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-b from-transparent via-royal-blue-500/5 to-transparent pointer-events-none animate-scanline;
+  }
+  
+  .retro-glow {
+    @apply relative;
+  }
+  
+  .retro-glow::after {
+    content: '';
+    @apply absolute inset-0 bg-royal-blue-500/5 blur-xl opacity-0 transition-opacity duration-300 pointer-events-none;
+  }
+  
+  .retro-glow:hover::after {
+    @apply opacity-100;
+  }
+  
+  .noise-overlay {
+    @apply fixed inset-0 pointer-events-none z-50 opacity-[0.02] dark:opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  
+  .pixel-border {
+    @apply relative border-2 border-black dark:border-white;
+    box-shadow: 4px 4px 0 0 rgba(65, 105, 225, 0.5);
+  }
+  
+  .doodle-arrow {
+    @apply absolute -left-8 top-1/2 w-6 h-6 text-royal-blue-500;
+  }
+}
+
+/* src/index.css - Add these new utility classes */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white dark:bg-black text-black dark:text-white;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+  
+  ::selection {
+    @apply bg-royal-blue-500/30 text-black dark:bg-green-500/30 dark:text-white;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20;
+  }
+  
+  .terminal-cursor::after {
+    content: '_';
+    @apply inline-block animate-cursor-blink;
+  }
+  
+  .retro-scanline {
+    @apply relative overflow-hidden;
+  }
+  
+  .retro-scanline::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-b from-transparent via-royal-blue-500/5 to-transparent pointer-events-none animate-scanline;
+  }
+  
+  .retro-glow {
+    @apply relative;
+  }
+  
+  .retro-glow::after {
+    content: '';
+    @apply absolute inset-0 bg-royal-blue-500/5 blur-xl opacity-0 transition-opacity duration-300 pointer-events-none;
+  }
+  
+  .retro-glow:hover::after {
+    @apply opacity-100;
+  }
+  
+  .noise-overlay {
+    @apply fixed inset-0 pointer-events-none z-50 opacity-[0.015] dark:opacity-[0.02];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  
+  .pixel-border {
+    @apply relative border-2 border-black dark:border-white;
+    box-shadow: 4px 4px 0 0 rgba(255, 140, 66, 0.3);
+  }
+  
+  .dark .pixel-border {
+    box-shadow: 4px 4px 0 0 rgba(76, 175, 80, 0.3);
+  }
+  
+  .doodle-arrow {
+    @apply absolute -left-8 top-1/2 w-6 h-6 text-royal-blue-500;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-900;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-royal-blue-500/50 dark:bg-green-500/50 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-royal-blue-600 dark:bg-green-600;
+  }
+  
+  /* Gradient text animation */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r;
+    background-size: 200% 200%;
+    animation: gradient-shift 5s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  /* CRT screen effect */
+  .crt-screen::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  /* Typewriter effect */
+  .typewriter {
+    overflow: hidden;
+    border-right: 2px solid;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: currentColor }
+  }
+}
+
+/* Grid pattern for background */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, #000000 1px, transparent 1px),
+    linear-gradient(to bottom, #000000 1px, transparent 1px);
+}
+
+/* Grid pattern for background */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, #374151 1px, transparent 1px),
+    linear-gradient(to bottom, #374151 1px, transparent 1px);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* 3D canvas container */
+canvas {
+  touch-action: none;
+}
+
+/* Animation for floating elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Gradient text animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+
